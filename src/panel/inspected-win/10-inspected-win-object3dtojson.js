@@ -160,6 +160,7 @@ InspectedWin3js.object3dToJSON  = function(object3d){
 			data.uniforms	= {}
 			Object.keys(material.uniforms).forEach(function(name){
 				var uniform = material.uniforms[name]
+				
 				if( uniform.type === 'f' ){
 					data.uniforms[name]	= {
 						type : uniform.type,
@@ -170,7 +171,7 @@ InspectedWin3js.object3dToJSON  = function(object3d){
 						type : uniform.type,
 						value : uniform.value,
 					}
-					InspectedWin3js.log('uniform', name, data.uniforms[name])
+					// InspectedWin3js.log('uniform', name, data.uniforms[name])
 				}else if( uniform.type === 'v2' ){
 					data.uniforms[name]	= {
 						type : uniform.type,
