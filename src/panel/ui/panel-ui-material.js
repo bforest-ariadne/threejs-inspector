@@ -60,8 +60,13 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 		'MeshNormalMaterial'	: 'MeshNormalMaterial',
 		'MeshPhongMaterial'	: 'MeshPhongMaterial',
 		'MeshStandardMaterial' : 'MeshStandardMaterial',
+		'MeshPhysicalMaterial' : 'MeshPhysicalMaterial',
+		'MeshToonMaterial' : 'MeshToonMaterial',
 		'PointCloudMaterial'	: 'PointCloudMaterial',
+		'PointsMaterial' : 'PointsMaterial',
+		'RawShaderMaterial' : 'RawShaderMaterial',
 		'ShaderMaterial'	: 'ShaderMaterial',
+		'ShadowMaterial' : 'ShadowMaterial',
 		'SpriteMaterial'	: 'SpriteMaterial',
 	})
 	materialSelectRow.onChange(function(){
