@@ -25,4 +25,10 @@ InspectedWin3js.extractThreeJSClassNames	= function() {
 		// - https://github.com/spite/ThreeJSEditorExtension/issues/9
 		InspectedWin3js._threeJSClassNames.push( property );
 	}
+	// moves the EventDispatcher property to end of the list so that it is the last classname matched in getTHREEJSClassName()
+	var index = InspectedWin3js._threeJSClassNames.indexOf('EventDispatcher');
+	if (index > -1) {
+		InspectedWin3js._threeJSClassNames.splice(index, 1);
+		InspectedWin3js._threeJSClassNames.push( 'EventDispatcher' )
+	}
 }

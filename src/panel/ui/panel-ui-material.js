@@ -294,6 +294,7 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 	//		update()
 	//////////////////////////////////////////////////////////////////////////////////
 	function update(){
+		console.log('editor material update', material, faceMaterialIndex)
 		var material = faceMaterialIndex === -1 ? editor.selected.material : editor.selected.material.materials[faceMaterialIndex]
 
 		var injectProperty = PanelWin3js.propertyOnObject3d;
@@ -366,7 +367,9 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 	var subFaceMaterialPanels	= []
 	container.updateUI	= updateUI
 	function updateUI() {
+		console.log('updateUI');
 		var material = faceMaterialIndex === -1 ? editor.selected.material : editor.selected.material.materials[faceMaterialIndex]
+		console.log('editor material UI', material, faceMaterialIndex)
 
 		materialSelectRow.value.setValue( material.className )
 

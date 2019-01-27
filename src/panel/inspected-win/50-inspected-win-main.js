@@ -27,7 +27,7 @@ InspectedWin3js.selectUuid = function(uuid){
         var object3DJson = InspectedWin3js.object3dToJSON(object3d)                
         // update selected
         InspectedWin3js.selected = object3DJson
-
+        if ( object3d.name === 'ground' ) InspectedWin3js.log( object3DJson )
         // send message to the panel
         InspectedWin3js.postMessageToPanel('selectObject3D', object3DJson)                      
 
@@ -121,7 +121,7 @@ InspectedWin3js.captureScene    = function(){
         if( scene === null )    return;
         scene.traverse(function(object3d){
                 var json = InspectedWin3js.treeviewObject3dToJSON(object3d)
-                InspectedWin3js.postMessageToPanel('updateOneObject3DTreeView', json)                      
+                InspectedWin3js.postMessageToPanel('updateOneObject3DTreeView', json)
         })
 
         InspectedWin3js.postMessageToPanel('capturedScene')
