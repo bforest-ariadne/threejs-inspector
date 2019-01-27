@@ -118,6 +118,16 @@ PanelWin3js.PanelMaterialShader	= function(faceMaterialIndex){
 						injectProperty(propertyPrefix+'.uniforms.'+name+'.value.y', vector3Row.valueY.getValue())
 						injectProperty(propertyPrefix+'.uniforms.'+name+'.value.z', vector3Row.valueZ.getValue())
 					})
+				}else if( data.type === 'v4' ){
+					var vector4Row = new UI.Vector4Row()
+					vector4Row.setLabel(name).updateUI(data.value)
+					container.add( vector4Row );				
+					vector4Row.onChange(function(){
+						injectProperty(propertyPrefix+'.uniforms.'+name+'.value.x', vector4Row.valueX.getValue())
+						injectProperty(propertyPrefix+'.uniforms.'+name+'.value.y', vector4Row.valueY.getValue())
+						injectProperty(propertyPrefix+'.uniforms.'+name+'.value.z', vector4Row.valueZ.getValue())
+						injectProperty(propertyPrefix+'.uniforms.'+name+'.value.w', vector4Row.valueW.getValue())
+					})
 				}else if( data.type === 'c' ){
 					var colorRow = new UI.ColorRow()
 					colorRow.setLabel(name).updateUI(data.value)

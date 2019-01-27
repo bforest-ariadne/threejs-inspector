@@ -188,6 +188,16 @@ InspectedWin3js.object3dToJSON  = function(object3d){
 							z : uniform.value.z,
 						}
 					}
+				}else if( uniform.type === 'v4' ){
+					data.uniforms[name]	= {
+						type : uniform.type,
+						value : {
+							x : uniform.value.x,
+							y : uniform.value.y,
+							z : uniform.value.z,
+							w : uniform.value.w
+						}
+					}
 				}else if( uniform.type === 'c' ){
 					data.uniforms[name]	= {
 						type : uniform.type,
