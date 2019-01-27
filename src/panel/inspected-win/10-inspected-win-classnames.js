@@ -23,6 +23,6 @@ InspectedWin3js.extractThreeJSClassNames	= function() {
 		if( typeof THREE[ property ] !== 'function' )	continue
 		// NOTE: unshift is key here to get proper inheritance
 		// - https://github.com/spite/ThreeJSEditorExtension/issues/9
-		InspectedWin3js._threeJSClassNames.unshift( property );
+		InspectedWin3js._threeJSClassNames.push( property );
 	}
 }
