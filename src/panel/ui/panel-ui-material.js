@@ -90,7 +90,7 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 		materialSelectRow.add(helpButton)
 		helpButton.onClick(function(){
 			console.log('help button clicked', editor.selected.material.className)
-			// var url = 'http://threejs.org/docs/#Reference/Objects/Mesh'
+			// var url = 'http://threejs.org/docs/#api/en/Objects/Mesh'
 			var url = typeToUrl(editor.selected.material.className)
 			PanelWin3js.plainFunction(function(url){
 				var win = window.open(url, '_blank');
@@ -99,7 +99,7 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 			return
 			
 			function typeToUrl(sniffType){
-				var url = 'http://threejs.org/docs/#Reference/Materials/'+sniffType
+				var url = 'http://threejs.org/docs/#api/en/Materials/'+sniffType
 				return url
 			}
 		})

@@ -84,7 +84,7 @@ PanelWin3js.PanelObject3D	= function(){
 		titleRow.add(helpButton)
 		helpButton.onClick(function(){
 			console.log('help button clicked', editor.selected.className)
-			// var url = 'http://threejs.org/docs/#Reference/Objects/Mesh'
+			// var url = 'http://threejs.org/docs/#api/en/Objects/Mesh'
 			var url = typeToUrl(editor.selected.className)
 			PanelWin3js.plainFunction(function(url){
 				var win = window.open(url, '_blank');
@@ -94,15 +94,15 @@ PanelWin3js.PanelObject3D	= function(){
 			
 			function typeToUrl(className){
 				if( className.match(/Light$/) !== null ){
-					var url = 'http://threejs.org/docs/#Reference/Lights/'+className
+					var url = 'http://threejs.org/docs/#api/en/Lights/'+className
 				}else if( className.match(/Camera$/) !== null ){
-					var url = 'http://threejs.org/docs/#Reference/Cameras/'+className
+					var url = 'http://threejs.org/docs/#api/en/Cameras/'+className
 				}else if( className === 'Scene' ){
-					var url = 'http://threejs.org/docs/#Reference/Scenes/Scene'
+					var url = 'http://threejs.org/docs/#api/en/Scenes/Scene'
 				}else if( className === 'Object3D' ){
-					var url = 'http://threejs.org/docs/#Reference/Core/Object3D'
+					var url = 'http://threejs.org/docs/#api/en/Core/Object3D'
 				}else{
-					var url = 'http://threejs.org/docs/#Reference/Objects/'+className
+					var url = 'http://threejs.org/docs/#api/en/Objects/'+className
 				}
 				return url
 			}

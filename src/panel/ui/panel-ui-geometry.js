@@ -84,7 +84,7 @@ PanelWin3js.PanelGeometry	= function(){
 		typeRow.add(helpButton)
 		helpButton.onClick(function(){
 			console.log('help button clicked', editor.selected.geometry.className)
-			// var url = 'http://threejs.org/docs/#Reference/Objects/Mesh'
+			// var url = 'http://threejs.org/docs/#api/en/Objects/Mesh'
 			var url = typeToUrl(editor.selected.geometry.className)
 			PanelWin3js.plainFunction(function(url){
 				var win = window.open(url, '_blank');
@@ -94,9 +94,9 @@ PanelWin3js.PanelGeometry	= function(){
 			
 			function typeToUrl(className){
 				if( className === 'Geometry' || className === 'BufferGeometry' ){
-					var url = 'http://threejs.org/docs/#Reference/Core/'+className
+					var url = 'http://threejs.org/docs/#api/en/Core/'+className
 				}else{
-					var url = 'http://threejs.org/docs/#Reference/Extras.Geometries/'+className
+					var url = 'http://threejs.org/docs/#api/en/Extras.Geometries/'+className
 				}
 				return url
 			}
