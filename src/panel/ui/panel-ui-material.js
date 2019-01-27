@@ -59,6 +59,7 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 		'MeshLambertMaterial'	: 'MeshLambertMaterial',
 		'MeshNormalMaterial'	: 'MeshNormalMaterial',
 		'MeshPhongMaterial'	: 'MeshPhongMaterial',
+		'MeshStandardMaterial' : 'MeshStandardMaterial',
 		'PointCloudMaterial'	: 'PointCloudMaterial',
 		'ShaderMaterial'	: 'ShaderMaterial',
 		'SpriteMaterial'	: 'SpriteMaterial',
@@ -195,15 +196,18 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 		2	: 'DoubleSide'
 	})
 	
-	var shadingRow	= new UI.SelectRow()
-	shadingRow.setLabel('Shading').onChange(update)
-	container.add( shadingRow );
-	shadingRow.value.setOptions( {
-		0	: 'No',
-		1	: 'Flat',
-		2	: 'Smooth'
-	})
+	// var shadingRow	= new UI.SelectRow()
+	// shadingRow.setLabel('Shading').onChange(update)
+	// container.add( shadingRow );
+	// shadingRow.value.setOptions( {
+	// 	0	: 'No',
+	// 	1	: 'Flat',
+	// 	2	: 'Smooth'
+	// })
 
+	var shadingRow	= new UI.CheckboxRow()
+	shadingRow.setLabel('Flat Shading').onChange(update)
+	container.add( shadingRow );
 	
 	var blendingRow	= new UI.SelectRow()
 	blendingRow.setLabel('Blending').onChange(update)
@@ -330,7 +334,7 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 		if( material.opacity !== undefined ) injectProperty(propertyPrefix+'.opacity', opacityRow.getValue())
 		if( material.transparent !== undefined ) injectProperty(propertyPrefix+'.transparent', transparentRow.getValue())
 		if( material.side !== undefined ) injectProperty(propertyPrefix+'.side', parseInt(sideRow.getValue(),10))
-		if( material.shading !== undefined ) injectProperty(propertyPrefix+'.shading', parseInt(shadingRow.getValue(),10))
+		if( material.flatShading !== undefined ) injectProperty(propertyPrefix+'.flatShading', shadingRow.getValue())
 		if( material.blending !== undefined ) injectProperty(propertyPrefix+'.blending', parseInt(blendingRow.getValue(),10))
 
 		if( material.rotation !== undefined ) injectProperty(propertyPrefix+'.rotation', rotationRow.getValue())
@@ -381,7 +385,7 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 		transparentRow.updateUI( material.transparent )
 
 		sideRow.updateUI( material.side )
-		shadingRow.updateUI( material.shading )
+		shadingRow.updateUI( material.flatShading )
 		blendingRow.updateUI( material.blending )
 
 		rotationRow.updateUI( material.rotation )

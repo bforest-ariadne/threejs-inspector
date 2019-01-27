@@ -144,7 +144,7 @@ InspectedWin3js.object3dToJSON  = function(object3d){
 		if( material.opacity !== undefined )		data.opacity	= material.opacity
 		if( material.transparent !== undefined)		data.transparent= material.transparent
 		if( material.side !== undefined )		data.side	= material.side
-		if( material.shading !== undefined )		data.shading	= material.shading
+		if( material.flatShading !== undefined )		data.flatShading	= material.flatShading
 		if( material.blending !== undefined )		data.blending	= material.blending
 		
 		// point SpriteMaterial
