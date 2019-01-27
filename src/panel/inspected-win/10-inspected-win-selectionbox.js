@@ -49,5 +49,6 @@ InspectedWin3js.SelectionBox.prototype.update	= function(){
 
 	// update the BoxHelper
 	this._boxHelper.visible = true
-	this._boxHelper.update(object3d)
+	this._boxHelper.setFromObject(object3d)
+	this._boxHelper.update()
 }
