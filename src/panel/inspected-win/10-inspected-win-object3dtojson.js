@@ -136,6 +136,8 @@ InspectedWin3js.object3dToJSON  = function(object3d){
 		if( material.emissive !== undefined )		data.emissive	= material.emissive.getHexString()
 		if( material.specular !== undefined )		data.specular	= material.specular.getHexString()
 		if( material.shininess !== undefined )		data.shininess	= material.shininess
+		if( material.metalness !== undefined )		data.metalness	= material.metalness
+		if( material.roughness !== undefined )		data.roughness	= material.roughness
 		
 		// wireframe
 		if( material.wireframe !== undefined )		data.wireframe	= material.wireframe

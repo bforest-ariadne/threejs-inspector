@@ -174,6 +174,14 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 	shininessRow.setLabel('Shininess').onChange(update)
 	container.add( shininessRow );
 
+	var metalnessRow	= new UI.NumberRow()
+	metalnessRow.setLabel('Metalness').onChange(update)
+	container.add( metalnessRow );
+
+	var roughnessRow	= new UI.NumberRow()
+	roughnessRow.setLabel('Roughness').onChange(update)
+	container.add( roughnessRow );
+
 	var wireframeRow	= new UI.CheckboxRow().setTitle('To enable wireframe')
 	wireframeRow.setLabel('wireframe').onChange(update)
 	container.add( wireframeRow );
@@ -299,7 +307,6 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 	//		update()
 	//////////////////////////////////////////////////////////////////////////////////
 	function update(){
-		console.log('editor material update', material, faceMaterialIndex)
 		var material = faceMaterialIndex === -1 ? editor.selected.material : editor.selected.material.materials[faceMaterialIndex]
 
 		var injectProperty = PanelWin3js.propertyOnObject3d;
@@ -335,6 +342,9 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 
 		
 		if( material.shininess !== undefined ) injectProperty(propertyPrefix+'.shininess', shininessRow.getValue())
+		if( material.metalness !== undefined ) injectProperty(propertyPrefix+'.metalness', metalnessRow.getValue())
+		if( material.roughness !== undefined ) injectProperty(propertyPrefix+'.roughness', roughnessRow.getValue())
+
 		if( material.wireframe !== undefined ) injectProperty(propertyPrefix+'.wireframe', wireframeRow.getValue())
 		if( material.wireframeLinewidth !== undefined ) injectProperty(propertyPrefix+'.wireframeLinewidth', wireframeLinewidthRow.getValue())
 		if( material.opacity !== undefined ) injectProperty(propertyPrefix+'.opacity', opacityRow.getValue())
@@ -386,6 +396,8 @@ PanelWin3js.PanelMaterial	= function(faceMaterialIndex){
 		specularRow.updateUI( material.specular )
 
 		shininessRow.updateUI( material.shininess )
+		metalnessRow.updateUI( material.metalness )
+		roughnessRow.updateUI( material.roughness )
 		wireframeRow.updateUI( material.wireframe )
 		wireframeLinewidthRow.updateUI( material.wireframeLinewidth )
 

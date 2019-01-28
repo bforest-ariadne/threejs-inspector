@@ -99,6 +99,7 @@ PanelWin3js.PanelTreeView	= function(){
 	})
 
 	PanelWin3js.editor.signals.object3dSelected.add(function( object3d ){
+		if ( object3d === null ) return;
 		console.log('treeview select object', object3d);
 		treeViewObjects[ object3d.uuid ].data.viewItem.visibilityIcon.style.opacity = object3d.visible ? '1' : '0.3';
 
