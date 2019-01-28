@@ -52,7 +52,7 @@ function TreeViewItem( label, id, visible ) {
 	this.visibilityIcon.classList.add('fa-eye')
 	this.visibilityIcon.style.float = 'right'
 	this.visibilityIcon.style.paddingTop = '0.3em'
-	this.visibilityIcon.style.opacity = visible ? '1.0' : '0.5'
+	this.visibilityIcon.style.opacity = visible ? '1.0' : '0.3'
 	containerDiv.appendChild(this.visibilityIcon)
 	
 	this.visibilityIcon.addEventListener( 'click', function( event ) {

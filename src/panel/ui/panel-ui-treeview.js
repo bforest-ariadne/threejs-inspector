@@ -94,13 +94,13 @@ PanelWin3js.PanelTreeView	= function(){
 	PanelWin3js.editor.signals.object3dVisible.add(function( visible ){
 		console.log('treeview visible', visible);
 		if(uuidVisibleClicked !== 0) {
-			treeViewObjects[ uuidVisibleClicked ].data.viewItem.visibilityIcon.style.opacity = visible ? '1' : '0.5';
+			treeViewObjects[ uuidVisibleClicked ].data.viewItem.visibilityIcon.style.opacity = visible ? '1' : '0.3';
 		}
 	})
 
 	PanelWin3js.editor.signals.object3dSelected.add(function( object3d ){
 		console.log('treeview select object', object3d);
-		treeViewObjects[ object3d.uuid ].data.viewItem.visibilityIcon.style.opacity = object3d.visible ? '1' : '0.5';
+		treeViewObjects[ object3d.uuid ].data.viewItem.visibilityIcon.style.opacity = object3d.visible ? '1' : '0.3';
 
 	})
 
