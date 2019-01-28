@@ -8,6 +8,7 @@ function Editor(){
 		clearObject3DTreeView: new SIGNALS.Signal(),
 		updateOneObject3DTreeView: new SIGNALS.Signal(),
 		capturedScene: new SIGNALS.Signal(),
+		object3dVisible: new SIGNALS.Signal(),
 
 		object3dSelected: new SIGNALS.Signal(),
 		injectedInspectedWin: new SIGNALS.Signal(),

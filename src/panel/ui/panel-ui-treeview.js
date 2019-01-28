@@ -91,6 +91,19 @@ PanelWin3js.PanelTreeView	= function(){
 		}
 	})
 
+	PanelWin3js.editor.signals.object3dVisible.add(function( visible ){
+		console.log('treeview visible', visible);
+		if(uuidVisibleClicked !== 0) {
+			treeViewObjects[ uuidVisibleClicked ].data.viewItem.visibilityIcon.style.opacity = visible ? '1' : '0.5';
+		}
+	})
+
+	PanelWin3js.editor.signals.object3dSelected.add(function( object3d ){
+		console.log('treeview select object', object3d);
+		treeViewObjects[ object3d.uuid ].data.viewItem.visibilityIcon.style.opacity = object3d.visible ? '1' : '0.5';
+
+	})
+
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Check that currently selected object is still in the new treeView
@@ -120,6 +133,7 @@ PanelWin3js.PanelTreeView	= function(){
 	//////////////////////////////////////////////////////////////////////////////
 	//              Code Separator
 	//////////////////////////////////////////////////////////////////////////////
+	var uuidVisibleClicked = 0;
 	
 	treeView.onSelect = function( object3dUuid ){
 		PanelWin3js.plainFunction(function(uuid){
@@ -128,10 +142,12 @@ PanelWin3js.PanelTreeView	= function(){
 		}, [object3dUuid])
 	}
 	treeView.onToggleVisibility = function(object3dUuid){
+		uuidVisibleClicked = object3dUuid;
 		PanelWin3js.plainFunction(function(uuid){
 			console.log('in panel-ui-treeview.js: toggle visibility in uuid', uuid)
 			var object3d = InspectedWin3js.getObjectByUuid(uuid)
 			object3d.visible = object3d.visible === true ? false : true
+			InspectedWin3js.postMessageToPanel('object3dVisible', object3d.visible)
 		}, [object3dUuid])
 	}
 	treeView.onExport = function(object3dUuid){
@@ -180,7 +196,8 @@ PanelWin3js.PanelTreeView	= function(){
 				parentUuid : dataJSON.parentUuid,
 				data : {
 					className : dataJSON.className,
-					viewItem : new TreeViewItem( label, dataJSON.uuid )
+					visible: dataJSON.visible,
+					viewItem : new TreeViewItem( label, dataJSON.uuid, dataJSON.visible )
 				}
 			}
 		}
@@ -189,7 +206,8 @@ PanelWin3js.PanelTreeView	= function(){
 		console.assert( treeViewObject !== undefined )
 
 		if( dataJSON.parentUuid ) {
-		        console.log('in panel-ui-treeview.js: appendChild treeviewItem to parent', dataJSON.parentUuid)
+						console.log('in panel-ui-treeview.js: appendChild treeviewItem to parent', dataJSON.parentUuid)
+					
 			// add current object to the proper parent
 			treeViewObjects[ dataJSON.parentUuid ].data.viewItem.appendChild( treeViewObject.data.viewItem );
 			treeViewObject.parent = dataJSON.parentUuid;

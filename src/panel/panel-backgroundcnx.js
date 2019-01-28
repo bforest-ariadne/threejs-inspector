@@ -48,6 +48,8 @@ PanelWin3js.initBackgroundConnection	= function(){
 			})
 	        }else if( message.type === 'selectObject3D' ){
 			PanelWin3js.editor.selectObject3D( message.data )
+		}else if( message.type === 'object3dVisible' ){
+			PanelWin3js.editor.signals.object3dVisible.dispatch(message.data)
 	        }else{
 	                console.assert(false, 'in panel-backgroundcnx.js: unknown message.type', message.type)
 	        }

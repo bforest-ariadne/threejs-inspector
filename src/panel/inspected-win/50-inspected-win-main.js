@@ -89,7 +89,8 @@ InspectedWin3js.treeviewObject3dToJSON  = function(object3d){
 
                 className: InspectedWin3js.getThreeJSClassName(object3d),                        
                 parentUuid : object3d.parent ? object3d.parent.uuid : null,
-                childrenUuid: []
+                childrenUuid: [],
+                visible: object3d.visible
         }
         // populate json.childrenUuid
         object3d.children.forEach(function(child){

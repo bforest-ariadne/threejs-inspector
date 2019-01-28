@@ -7,7 +7,7 @@
  * @param {String} label - 
  * @param {[type]} id    [description]
  */
-function TreeViewItem( label, id ) {
+function TreeViewItem( label, id, visible ) {
 
 	this.children = [];
 	this.collapsed = false;
@@ -21,6 +21,7 @@ function TreeViewItem( label, id ) {
 	var containerDiv = document.createElement( 'div' )
 	containerDiv.classList.add('container')
 	this.liElement.appendChild(containerDiv)
+	this.visibilityIcon = null;
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Comments
@@ -45,18 +46,19 @@ function TreeViewItem( label, id ) {
 	containerDiv.appendChild( labelElement );
 	
 ;(function(){
-	var visibilityIcon = document.createElement('i')
-	visibilityIcon.setAttribute('title', 'Toggle visibility of this object')
-	visibilityIcon.classList.add('fa')
-	visibilityIcon.classList.add('fa-eye')
-	visibilityIcon.style.float = 'right'
-	visibilityIcon.style.paddingTop = '0.3em'
-	containerDiv.appendChild(visibilityIcon)
+	this.visibilityIcon = document.createElement('i')
+	this.visibilityIcon.setAttribute('title', 'Toggle visibility of this object')
+	this.visibilityIcon.classList.add('fa')
+	this.visibilityIcon.classList.add('fa-eye')
+	this.visibilityIcon.style.float = 'right'
+	this.visibilityIcon.style.paddingTop = '0.3em'
+	this.visibilityIcon.style.opacity = visible ? '1.0' : '0.5'
+	containerDiv.appendChild(this.visibilityIcon)
 	
-	visibilityIcon.addEventListener( 'click', function( event ) {
+	this.visibilityIcon.addEventListener( 'click', function( event ) {
 		// notify the selection
-		this.treeView.onToggleVisibility( this.id );		
-
+		this.treeView.onToggleVisibility( this.id );
+		if ( event.target.id === '' ) event.target.id = this.id;
 		// event.preventDefault();
 		event.stopPropagation()
 	}.bind(this) );
